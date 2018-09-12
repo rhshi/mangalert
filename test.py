@@ -22,4 +22,4 @@ for row in rows[:2]:
     #cols = [ele.text.strip() for ele in cols]
     #data.append([ele for ele in cols if ele])
 
-
+asdf
