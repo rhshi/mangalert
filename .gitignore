@@ -1,3 +1,6 @@
 *.pyo
 *.pyc
 test.py
+.flaskenv
+.vscode
+__pycache__
