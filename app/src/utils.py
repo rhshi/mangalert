@@ -20,3 +20,7 @@ def diffMonth(raw_date):
     d2 = datetime.now()
     return (d2.year - d1.year) * 12 + d2.month - d1.month
 
+
+def createLink(str):
+    return 'https://mangadex.org{}'.format(str)
+
