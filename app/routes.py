@@ -4,17 +4,25 @@ from flask_login import current_user, login_user, login_required, logout_user
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.models import User, MangaFollow
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, MDListForm
+from app.models import User, MangaFollow, Post
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, MDListForm, PostForm
 from app.src.init_follows import initializeFollows
 from app.src.utils import createLink
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    return render_template('index.html')
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, title=form.title.data, link=form.link.data, user=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
+    return render_template('index.html', form=form, posts=posts.items)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -63,7 +71,8 @@ def user(username):
         db.session.commit()
         flash('thank you for connecting your mdlist.')
         return redirect(url_for('user', username=current_user.username))
-    return render_template('user.html', user=user, form=form)
+    posts = current_user.own_posts().all()
+    return render_template('user.html', user=user, form=form, posts=posts)
 
 
 @app.before_request
@@ -104,6 +113,7 @@ def follow(username):
     flash('you are now following {}!'.format(username))
     return redirect(url_for('user', username=username))
 
+
 @app.route('/unfollow/<username>')
 @login_required
 def unfollow(username):
@@ -118,3 +128,10 @@ def unfollow(username):
     db.session.commit()
     flash('you have unfollowed {}.'.format(username))
     return redirect(url_for('user', username=username))
+
+
+@app.route('/explore')
+@login_required
+def explore():
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(page, app.config['POSTS_PER_PAGE'], False)
+    return render_template('index.html', title='explore', posts=posts.items)

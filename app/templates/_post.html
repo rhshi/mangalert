@@ -1,0 +1,14 @@
+<hr>
+<div>   
+    <h3>{{ post.title }}</h3>
+    {% if post.link %}<a href="{{ post.link }}">{{ post.link }}</a>{% endif %}
+    <table>
+        <tr valign="top">
+            <td><img src="{{ post.user.avatar(36) }}"></td>
+            <td>by <a href="{{ url_for('user', username=post.user.username) }}">{{ post.user.username }}</a> on {{ post.timestamp}}</td>
+        </tr>
+    </table>
+        <p>
+            {{ post.body }}
+        </p>
+</div> 

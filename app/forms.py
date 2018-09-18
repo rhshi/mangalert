@@ -57,3 +57,11 @@ class MDListForm(FlaskForm):
             raise ValidationError('this is not a valid mdlist')
         elif checkValid(mdlist.data):
             raise ValidationError('your mdlist is private. please make it public in your mangadex settings.')
+
+
+class PostForm(FlaskForm):
+    post = TextAreaField('say something', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    title = StringField('title', validators=[(DataRequired())])
+    link = StringField('link (optional)')
+    submit = SubmitField('submit')

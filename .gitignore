@@ -4,3 +4,4 @@ test.py
 .flaskenv
 .vscode
 __pycache__
+app.db

@@ -3,5 +3,27 @@
 {% block content %}
     <div class="blurb">
         <h1>welcome to your mangalert, {{ current_user.username }}!</h1>
-    </div><!-- /.blurb -->
+    </div>
+    {% if form %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <h3>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+        </h3>
+        <p>
+            {{ form.link.label }}<br>
+            {{ form.link(size=32) }}<br>
+            {{ form.post.label }}<br>
+            {{ form.post(cols=32, rows=4) }}<br>
+            {% for error in form.post.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% endif %}
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
 {% endblock %}
