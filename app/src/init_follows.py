@@ -3,11 +3,12 @@ import time
 from .utils import diffMonth, makeSoup, writeMDFollowsData
 
 
-def gatherFollows():
+def gatherFollows(link):
     page_num = 1
     follows = []
+    url = '{}/0/2/'.format(link)
     while True:
-        link = 'https://mangadex.org/list/4680/0/2/{}/'.format(page_num)
+        link = url + str(page_num)
         soup = makeSoup(link)
         contents = soup.find_all('a')
 
@@ -75,8 +76,8 @@ def determineComplete(manga):
             continue
 
 
-def initializeFollows():
-    all_follows = gatherFollows()
+def initializeFollows(link, test=False):
+    all_follows = gatherFollows(link)
     ongoing = []
     complete = []
     for manga in all_follows:
@@ -88,5 +89,18 @@ def initializeFollows():
             print(manga[0], ': completed')
         time.sleep(1)
 
-    writeMDFollowsData(ongoing, 'ongoing')
-    writeMDFollowsData(complete, 'completed')                                    
+    if test:
+        writeMDFollowsData(ongoing, 'ongoing')
+        writeMDFollowsData(complete, 'completed')
+        return
+    else:
+        return ongoing, completed
+
+
+def checkValid(link):
+    soup = makeSoup(link)
+    alert = soup.find('div', class_='alert alert-info text-center')
+    if alert:
+        return True
+    else:
+        return False

@@ -1,0 +1,85 @@
+2018-09-18 14:34:15,928 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 14:34:46,775 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 14:35:17,937 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 14:35:31,226 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 15:21:50,264 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 15:24:16,450 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 15:24:26,145 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 15:25:09,941 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 66, in user
+    return render_template('user.html', user=user, form=form)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 38, in block "content"
+    {% if not current_user.is_following(user) %}
+jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'is_following'
+2018-09-18 15:25:29,555 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 15:25:40,555 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 66, in user
+    return render_template('user.html', user=user, form=form)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 38, in block "content"
+    {% if not current_user.is_following(user) %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 56, in is_following
+    return self.followed.filter(
+AttributeError: 'User' object has no attribute 'followed'
+2018-09-18 15:26:11,722 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
