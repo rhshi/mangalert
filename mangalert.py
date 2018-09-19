@@ -1,5 +1,8 @@
-from app import app, db
+from app import create_app, db
 from app.models import User, MangaFollow, Post
+
+
+app = create_app()
 
 
 @app.shell_context_processor

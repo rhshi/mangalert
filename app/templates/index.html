@@ -6,30 +6,39 @@
     <div class="blurb">
         <h1>welcome to your mangalert, {{ current_user.username }}!</h1>
     </div>
+    <div class="wrapper" style="overflow:auto">
+    <div class="col-md-4" style="width:calc(35% - 8px);float:right">
     {{ wtf.quick_form(form) }}
+</div>
+<div style="width:calc(60% - 20px);float:left">
+    <div style="margin-bottom: 8em">
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
-        <nav aria-label="...">
+</div>
+    <nav aria-label="...">
             <ul class="pager">
                 <li class="previous{% if not prev_url %} disabled{% endif %}">
                     <a href="{{ prev_url or '#' }}">
-                        <span aria-hidden="true">&larr;</span> Newer posts
+                        <span aria-hidden="true">&larr;</span> newer posts
                     </a>
                 </li>
                 <li class="next{% if not next_url %} disabled{% endif %}">
                     <a href="{{ next_url or '#' }}">
-                        Older posts <span aria-hidden="true">&rarr;</span>
+                        older posts <span aria-hidden="true">&rarr;</span>
                     </a>
                 </li>
             </ul>
         </nav>
+</div>
+</div>
+        
     {% else %}
     <div>
         <h1>welcome to mangalert!</h1>
         <hr>
         <p>
-            if you were logged in, you would be able to see your newest manga updates and posts from those you follow. please log in or sign up if you haven't done so already! alternatively, you can <a href="{{ url_for('explore') }}">explore</a>if you want to see some of the cool stuff going on.
+            if you were logged in, you would be able to see your newest manga updates and posts from those you follow. please log in or sign up if you haven't done so already! alternatively, you can <a href="{{ url_for('main.explore') }}">explore</a> if you want to see some of the cool stuff going on.
         </p>
     </div>
 
