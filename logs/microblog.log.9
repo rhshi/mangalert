@@ -1,4 +1,4 @@
-2018-09-18 20:35:11,425 ERROR: Exception on /login [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-18 16:02:59,980 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,8 +12,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 51, in login
-    return render_template('login.html', title='sign in', form=form)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 25, in index
+    return render_template('index.html', form=form, posts=posts)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
@@ -26,26 +28,16 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/login.html", line 1, in top-level template code
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 34, in top-level template code
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
     {% block content %}{% endblock %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/login.html", line 24, in block "content"
-    <a href="{{ url_for('reset_password') }}">forgot password</a>
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'reset_password'. Did you forget to specify values ['token']?
-2018-09-18 20:37:24,995 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
-2018-09-18 20:43:48,859 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
-2018-09-18 20:43:53,982 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 15, in block "content"
+    {{ form.link(32) }}<br>
+TypeError: __call__() takes 1 positional argument but 2 were given
+2018-09-18 16:03:32,905 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:06:10,711 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:06:15,123 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -59,13 +51,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 25, in index
-    posts = current_user.followed_posts().paginate(
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-AttributeError: 'AnonymousUserMixin' object has no attribute 'followed_posts'
-2018-09-18 20:46:10,429 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
-2018-09-18 20:46:13,606 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
+    posts = current_user.followed_posts().all()
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
+    own = Post.query.filter_by(user_id==self.id)
+NameError: name 'user_id' is not defined
+2018-09-18 16:07:03,740 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:07:06,598 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -79,11 +73,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 33, in index
-    posts=posts.items, next_url=next_url,
-UnboundLocalError: local variable 'posts' referenced before assignment
-2018-09-18 20:46:56,960 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
-2018-09-18 20:46:58,092 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
+    posts = current_user.followed_posts().all()
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
+    own = Post.query.filter_by(Post.user_id==self.id)
+TypeError: filter_by() takes 1 positional argument but 2 were given
+2018-09-18 16:08:31,482 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:08:33,196 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -97,7 +95,33 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 35, in index
-    posts=posts.items, next_url=next_url,
-AttributeError: 'list' object has no attribute 'items'
-2018-09-18 20:47:21,217 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
+    posts = current_user.followed_posts().all()
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
+    own = Post.query.filter_by(user_id==self.id)
+NameError: name 'user_id' is not defined
+2018-09-18 16:08:57,561 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:09:00,400 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
+    posts = current_user.followed_posts().all()
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
+    own = Post.query.filter_by(user_id==self.id)
+NameError: name 'user_id' is not defined
+2018-09-18 16:09:23,411 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]

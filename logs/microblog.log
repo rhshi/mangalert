@@ -1,81 +1,4 @@
-2018-09-18 18:08:34,890 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1811, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2087, in preprocess_request
-    rv = func()
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 96, in before_request
-    if current_user.is_authenticated:
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 95, in load_user
-    return User.query.get(int(id))
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 923, in get
-    ident, loading.load_on_pk_identity)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1006, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
-    return q.one()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2947, in one
-    ret = self.one_or_none()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
-    ret = list(self)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
-    return self._execute_and_instances(context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.mdlist AS user_mdlist, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.id = ?'] [parameters: (1,)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2018-09-18 18:08:45,186 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:09:05,218 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:09:35,665 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:09:42,463 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:09:48,987 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:11:48,406 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-18 21:02:18,834 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MywiZXhwIjoxNTM3MzIzMTA5LjEzMTY0NTJ9.WR5wTtwo9dS61Ph2ibsglzcAFvlGRiNoptPNvsrj4vE [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -89,9 +12,45 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 91, in user
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 184, in reset_password
+    if current_user.is_authenticated():
+TypeError: 'bool' object is not callable
+2018-09-18 21:02:38,017 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
+2018-09-18 21:02:50,892 ERROR: Exception on /reset_password/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXNldF9wYXNzd29yZCI6MywiZXhwIjoxNTM3MzIzMTY0Ljg5NDUwNn0.hGotozB0gcb-MTiKBKJ0CmQkY8I0qt6N2g3QKhUSfbk [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 187, in reset_password
+    user = User.verify_reset_password(token)
+AttributeError: type object 'User' has no attribute 'verify_reset_password'
+2018-09-18 21:03:14,869 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
+2018-09-18 21:47:07,281 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:47:44,462 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:47:49,580 ERROR: Exception on /explore [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 162, in explore
     next_url=next_url, prev_url=prev_url)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -105,13 +64,33 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 1, in top-level template code
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/explore.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 34, in top-level template code
-    {% block content %}{% endblock %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 20, in block "content"
-    {{ form.hidden_tag() }}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 53, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/explore.html", line 8, in block "app_content"
+    {% include '_post.html' %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/_post.html", line 8, in top-level template code
+    <a href="{{ url_for('user', username=post.author.username) }}">
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 430, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2018-09-18 18:12:28,591 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+jinja2.exceptions.UndefinedError: 'app.models.Post object' has no attribute 'author'
+2018-09-18 21:48:29,892 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:51:58,538 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:52:16,618 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:53:00,731 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:54:03,955 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:55:15,317 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:58:36,988 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 21:58:50,111 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]
+2018-09-18 22:01:50,291 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:50]

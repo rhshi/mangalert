@@ -1,4 +1,4 @@
-2018-09-18 16:02:59,980 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-18 16:25:59,712 ERROR: Exception on /user/teaserimage [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,8 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 25, in index
-    return render_template('index.html', form=form, posts=posts)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 75, in user
+    return render_template('user.html', user=user, form=form, posts=posts)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
@@ -28,16 +28,27 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 1, in top-level template code
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 1, in top-level template code
     {% extends "base.html" %}
   File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
     {% block content %}{% endblock %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 15, in block "content"
-    {{ form.link(32) }}<br>
-TypeError: __call__() takes 1 positional argument but 2 were given
-2018-09-18 16:03:32,905 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:06:10,711 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:06:15,123 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 38, in block "content"
+    {% if not current_user.is_following(user) %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 56, in is_following
+    return self.followed.filter(
+AttributeError: 'User' object has no attribute 'followed'
+2018-09-18 16:26:33,073 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 18:07:54,853 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 18:08:02,891 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -47,81 +58,56 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
-    posts = current_user.followed_posts().all()
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
-    own = Post.query.filter_by(user_id==self.id)
-NameError: name 'user_id' is not defined
-2018-09-18 16:07:03,740 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:07:06,598 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
-    posts = current_user.followed_posts().all()
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
-    own = Post.query.filter_by(Post.user_id==self.id)
-TypeError: filter_by() takes 1 positional argument but 2 were given
-2018-09-18 16:08:31,482 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:08:33,196 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
-    posts = current_user.followed_posts().all()
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
-    own = Post.query.filter_by(user_id==self.id)
-NameError: name 'user_id' is not defined
-2018-09-18 16:08:57,561 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:09:00,400 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
-    posts = current_user.followed_posts().all()
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 65, in followed_posts
-    own = Post.query.filter_by(user_id==self.id)
-NameError: name 'user_id' is not defined
-2018-09-18 16:09:23,411 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1811, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2087, in preprocess_request
+    rv = func()
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 96, in before_request
+    if current_user.is_authenticated:
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 95, in load_user
+    return User.query.get(int(id))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 923, in get
+    ident, loading.load_on_pk_identity)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1006, in _get_impl
+    return db_load_fn(self, primary_key_identity)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
+    return q.one()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2947, in one
+    ret = self.one_or_none()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
+    ret = list(self)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.mdlist AS user_mdlist, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.id = ?'] [parameters: (1,)] (Background on this error at: http://sqlalche.me/e/e3q8)

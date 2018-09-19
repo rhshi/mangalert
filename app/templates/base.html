@@ -1,36 +1,78 @@
-<!DOCTYPE html>
-	<html>
-		<head>
-            {% if title %}
-            <title>{{ title }} - mangalert</title>
-            {% else %}
-            <title>welcome to mangalert</title>
-            {% endif %}
-		</head>
-		<body>
+{% extends 'bootstrap/base.html' %}
 
-			<div>
-				mangalert:
-				<a href="{{ url_for('index') }}">home</a>
-				<a href="{{ url_for('explore') }}">explore</a>
-				{% if current_user.is_anonymous %}
-				<a href="{{ url_for('login') }}">login</a>
-				{% else %}
-				<a href="{{ url_for('user', username=current_user.username) }}">profile</a>
-				<a href="{{ url_for('logout') }}">logout</a>
-				{% endif %}
-			</div>
-			
-        	<hr>
-        	{% with messages = get_flashed_messages() %}
-        	{% if messages %}
-        	<ul>
-            	{% for message in messages %}
-            	<li>{{ message }}</li>
-            	{% endfor %}
-        	</ul>
-        	{% endif %}
-        	{% endwith %}
-        	{% block content %}{% endblock %}
-    	</body>
-	</html>
+{% block title %}
+    {% if title %}
+    <title>{{ title }} - mangalert</title>
+    {% else %}
+    <title>welcome to mangalert</title>
+    {% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">mangalert</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index') }}">home</a></li>
+                    <li><a href="{{ url_for('explore') }}">explore</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+					<li><a href="{{ url_for('login') }}">login</a></li>
+					<li><a href="{{ url_for('register') }}">sign up</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+	
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+
+    {% block footer %}
+<!-- Footer -->
+<hr>
+<footer>
+
+        <!-- Footer Elements -->
+        <div class="container">
+    
+          <!-- Call to action -->
+          <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+              <a href="mailto:mangalerttest@gmail.com" class="btn btn-outline-white btn-rounded">contact</a>
+            </li>
+          </ul>
+          <!-- Call to action -->
+    
+        </div>
+        <!-- Footer Elements -->
+    
+      </footer>
+      <!-- Footer -->
+{% endblock %}
+{% endblock %}
+

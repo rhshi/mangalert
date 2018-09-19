@@ -1,4 +1,25 @@
-2018-09-18 16:25:59,712 ERROR: Exception on /user/teaserimage [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-18 20:53:20,781 ERROR: Exception on /reset_password_request [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 192, in send
+    message.rcpt_options)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 852, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 600, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 440, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 367, in putcmd
+    self.send(str)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 359, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,43 +33,27 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 75, in user
-    return render_template('user.html', user=user, form=form, posts=posts)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
-    {% block content %}{% endblock %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 38, in block "content"
-    {% if not current_user.is_following(user) %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 56, in is_following
-    return self.followed.filter(
-AttributeError: 'User' object has no attribute 'followed'
-2018-09-18 16:26:33,073 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:07:54,853 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 18:08:02,891 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 175, in reset_password_request
+    send_reset_password_email(user)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/email.py", line 27, in send_reset_password_email
+    token=token
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/email.py", line 11, in send_email
+    mail.send(msg)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 984, in quit
+    res = self.docmd("quit")
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 420, in docmd
+    self.putcmd(cmd, args)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 367, in putcmd
+    self.send(str)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 359, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2018-09-18 20:55:55,955 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:48]
+2018-09-18 20:56:03,578 ERROR: Exception on /reset_password_request [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,56 +63,59 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
     raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1811, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2087, in preprocess_request
-    rv = func()
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 96, in before_request
-    if current_user.is_authenticated:
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 95, in load_user
-    return User.query.get(int(id))
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 923, in get
-    ident, loading.load_on_pk_identity)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 1006, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
-    return q.one()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2947, in one
-    ret = self.one_or_none()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
-    ret = list(self)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
-    return self._execute_and_instances(context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.mdlist AS user_mdlist, user.about_me AS user_about_me, user.last_seen AS user_last_seen \nFROM user \nWHERE user.id = ?'] [parameters: (1,)] (Background on this error at: http://sqlalche.me/e/e3q8)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 175, in reset_password_request
+    send_reset_password_email(user)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/email.py", line 27, in send_reset_password_email
+    token=token
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/email.py", line 11, in send_email
+    mail.send(msg)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 491, in send
+    with self.connect() as connection:
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
+    self.host = self.configure_host()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
+    host.login(self.mail.username, self.mail.password)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 730, in login
+    raise last_exception
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 721, in login
+    initial_response_ok=initial_response_ok)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 642, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbtd\n5.7.14 42M5b-oX45iy7ySt2jwn_0CDtHSUbNFVNhqEalOAZJYW1ZtKcJ4BGtNL2o9Kke4ft0k_uE\n5.7.14 nPykCT23H8rTI8wu5DzEZM6hfwoA0HL6USvzy-OEhqWZwpoVUwOhsLHOfiBMNh6X6XX_UG\n5.7.14 lSKFmLKeagFjpPv3KepjkxABgApImL6zqphLDEesMlHWUXoZBUFxIzRX1gwSwmfho-tgRH\n5.7.14 dH7BRwRlV2r4FF0SnbF50MI_iTMM6zLU91u0XomsxBAAhkHxXfdnusVgKES_Pqj14URt5R\n5.7.14 ShVUeUQYyuraDWdBQXuq44U-nnImEU-ae4UpLNLPOnypw61qvhq60U-uocjfp5OJ25rTW9\n5.7.14 zUGqGtjVtJs6vPIKOowzzEfegB1_kBdcUT9T0tnXJ_QAP5e4tpVLNgM7wgVdiuh67-aroz\n5.7.14 AuSLFaBifNIe1ob7pdbsXzJnFv-hMk6uGDQcvkK9w212n12KBkxD9WCb2wJ70JepoutA2Q\n5.7.14 H1KC8> Please log in via your web browser and then try again.\n5.7.14  Learn more at\n5.7.14  https://support.google.com/mail/answer/78754 q85-v6sm9938154oic.56 - gsmtp')
+2018-09-18 20:58:26,212 ERROR: Exception on /reset_password_request [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 175, in reset_password_request
+    send_reset_password_email(user)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/email.py", line 27, in send_reset_password_email
+    token=token
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/email.py", line 11, in send_email
+    mail.send(msg)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 491, in send
+    with self.connect() as connection:
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
+    self.host = self.configure_host()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
+    host.login(self.mail.username, self.mail.password)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 730, in login
+    raise last_exception
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 721, in login
+    initial_response_ok=initial_response_ok)
+  File "/home/bshi/miniconda3/lib/python3.6/smtplib.py", line 642, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (534, b'5.7.14 <https://accounts.google.com/signin/continue?sarp=1&scc=1&plt=AKgnsbst\n5.7.14 MRQ0ysChlPBRmddVlJhbgS2sVNHHK4_1oVQLQw58txLMqBJnN9vjY3EDsNZSp4Gxrpltb4\n5.7.14 aBGiDXFf09LjcKkGRIyegWCS41C6IF8e0jmEnnew94f9H0qipNkaQPI4lcYifhLxVcgyzX\n5.7.14 0lUb7g0gbn0SBUnmtUsFnce9t0zJ8hA-Sqt7uUrTVR6fyK_voxY_Iiv0RRyfQcb1WxODGM\n5.7.14 Urx5JsSGMss8OAZSCVrb4qta5HPXVLGmUwfjf1JYo1-vFa719hqZP88tJgK6sJ4lb_f2LW\n5.7.14 ivK4lboH7bkSIfJQ7kFyjGRlqqGaXQpzqlQIF_FgQmPfLGfydFl5DJQa94Nagm40Ti4Ewb\n5.7.14 BDGCYHBapRNt7m4sY0QElIWWjLcAtQntncFpQGTFq09HUKd3qNRWXJPtBPeQCa3dakF-Uj\n5.7.14 CSKkY3jymdEJEDxBedadhCqBbe3Dwh1Qzp4ZPyTU15NPWuNz0uw3I6qPHfdn4kV8NlJTcm\n5.7.14 bLi9w> Please log in via your web browser and then try again.\n5.7.14  Learn more at\n5.7.14  https://support.google.com/mail/answer/78754 j20-v6sm6345254oth.51 - gsmtp')
