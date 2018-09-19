@@ -1,13 +1,4 @@
-2018-09-18 16:11:52,890 ERROR: Exception on / [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: post.title
-
-The above exception was the direct cause of the following exception:
-
+2018-09-18 16:21:35,718 ERROR: Exception on /index [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,48 +14,57 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 24, in index
-    posts = current_user.followed_posts().all()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2836, in all
-    return list(self)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
-    return self._execute_and_instances(context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 25, in index
+    return render_template('index.html', form=form, posts=posts)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: post.title [SQL: 'SELECT anon_1.post_id AS anon_1_post_id, anon_1.post_body AS anon_1_post_body, anon_1.post_timestamp AS anon_1_post_timestamp, anon_1.post_title AS anon_1_post_title, anon_1.post_link AS anon_1_post_link, anon_1.post_user_id AS anon_1_post_user_id \nFROM (SELECT post.id AS post_id, post.body AS post_body, post.timestamp AS post_timestamp, post.title AS post_title, post.link AS post_link, post.user_id AS post_user_id \nFROM post JOIN followers ON followers.followed_id = post.user_id \nWHERE followers.follower_id = ? UNION SELECT post.id AS post_id, post.body AS post_body, post.timestamp AS post_timestamp, post.title AS post_title, post.link AS post_link, post.user_id AS post_user_id \nFROM post \nWHERE post.user_id = ?) AS anon_1 ORDER BY anon_1.post_timestamp DESC'] [parameters: (1, 1)] (Background on this error at: http://sqlalche.me/e/e3q8)
-2018-09-18 16:13:49,939 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:13:55,705 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:14:26,411 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:17:20,066 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:17:23,820 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:17:36,325 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:17:42,908 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:17:49,398 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:18:08,745 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:18:14,219 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:19:26,784 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:19:40,265 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:19:44,553 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:19:55,619 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:20:40,657 ERROR: Exception on /index [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/_post.html", line 10, in template
+    <b>{{ post.body }}</b>
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 25, in block "content"
+    {% include '_post.html' %}
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/_post.html", line 10, in template
+    <b>{{ post.body }}</b>
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 213, in parse_if
+    'name:endif'))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 170, in parse_statements
+    self.fail_eof(end_tokens)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 104, in fail_eof
+    return self._fail_ut_eof(None, stack, lineno)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2018-09-18 16:22:16,022 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:22:18,580 ERROR: Exception on /index [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -80,38 +80,32 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 19, in index
-    post = Post(body=form.post.data, title=form.title.data, link=form.link.data, author=current_user)
-NameError: name 'Post' is not defined
-2018-09-18 16:21:05,590 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
-2018-09-18 16:21:14,417 ERROR: Exception on /index [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 25, in index
+    return render_template('index.html', form=form, posts=posts)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/routes.py", line 19, in index
-    post = Post(body=form.post.data, title=form.title.data, link=form.link.data, author=current_user)
-  File "<string>", line 4, in __init__
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 417, in _initialize_instance
-    manager.dispatch.init_failure(self, args, kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 249, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 414, in _initialize_instance
-    return manager.original_init(*mixed[1:], **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/ext/declarative/base.py", line 736, in _declarative_constructor
-    (k, cls_.__name__))
-TypeError: 'author' is an invalid keyword argument for Post
-2018-09-18 16:21:28,648 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/index.html", line 25, in block "content"
+    {% include '_post.html' %}
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/_post.html", line 6, in top-level template code
+    <td><img src="{{ post.author.avatar(36) }}"></td>
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.models.Post object' has no attribute 'author'
+2018-09-18 16:22:35,453 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:23:24,166 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:23:57,690 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
+2018-09-18 16:25:30,739 INFO: Microblog startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:46]
