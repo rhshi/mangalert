@@ -31,7 +31,6 @@ class User(UserMixin, db.Model):
     mdlist = db.Column(db.String(48))
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
-    logged_in = db.Column(db.Boolean)
 
     def __repro__(self):
         return '<User: {}>'.format(self.username)

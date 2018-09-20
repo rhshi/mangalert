@@ -7,7 +7,7 @@ from app.main import bp
 from app.main.forms import EditProfileForm, MDListForm, PostForm
 from app.models import User, MangaFollow, Post
 from app.src.init_follows import initializeFollows
-from app.src.utils import createLink
+from app.src.utils import createLink, diffDay
 
 
 @bp.before_app_request
@@ -20,8 +20,7 @@ def before_request():
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
 def index():
-    online_users = [user for user in User.query.all() if user.logged_in]
-    following_online = [user for user in User.query.all() if user.logged_in and user in list(current_user.user_followed)]
+    
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, title=form.title.data, link=form.link.data, user=current_user)
@@ -30,6 +29,7 @@ def index():
         flash('your post is now live!')
         return redirect(url_for('main.index'))
     if current_user.is_authenticated:
+        following_online = [user for user in User.query.all() if diffDay(user, current_app.config['ONLINE_LAST']) and user in list(current_user.user_followed)]
         page = request.args.get('page', 1, type=int)
         posts = current_user.followed_posts().paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
@@ -41,7 +41,7 @@ def index():
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
     else:
-        return render_template('index.html', online_users=online_users)
+        return render_template('index.html')
 
 
 @bp.route('/explore')

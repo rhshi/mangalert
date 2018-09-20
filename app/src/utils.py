@@ -21,6 +21,10 @@ def diffMonth(raw_date):
     return (d2.year - d1.year) * 12 + d2.month - d1.month
 
 
+def diffDay(user, diff):
+    return (datetime.utcnow() - user.last_seen).total_seconds() < diff * 60
+
+
 def createLink(str):
     return 'https://mangadex.org{}'.format(str)
 

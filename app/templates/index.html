@@ -16,7 +16,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">submit a post</h5>
+        <h3 class="modal-title" id="exampleModalLabel">submit a post</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -33,6 +33,7 @@
 
 
 <div style="width:calc(60% - 20px);float:left">
+    {% if posts %}
     <div style="margin-bottom: 8em">
     {% for post in posts %}
         {% include '_post.html' %}
@@ -52,7 +53,10 @@
                 </li>
             </ul>
         </nav>
-</div>
+        {% else %}
+        <p>there are no posts to show.</p>
+        {% endif %}
+    </div>
 </div>
         
     {% else %}

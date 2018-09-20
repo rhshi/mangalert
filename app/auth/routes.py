@@ -18,7 +18,6 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('invalid username or password')
             return redirect(url_for('auth.login'))
-        user.logged_in = True
         db.session.commit()
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
@@ -30,7 +29,6 @@ def login():
 
 @bp.route('/logout')
 def logout():
-    current_user.logged_in = False
     db.session.commit()
     logout_user()
 
@@ -48,6 +46,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        flash('you are now registered!')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', title='register', form=form)
 

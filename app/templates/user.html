@@ -37,7 +37,6 @@
                 {% else %}
                 <p>{{ '{}'.format(user.followers.count()) }} <a href="#followers-modal" data-toggle="modal" data-target="#followers-modal">followers</a>, {{ '{}'.format(user.user_followed.count()) }} <a href="#following-modal" data-toggle="modal" data-target="#following-modal">following</a></p>
                 {% endif %}
-                {% if user == current_user %}
                 {% if not current_user.is_following(user) %}
                 <p><a href="{{ url_for('main.follow', username=user.username) }}">follow</a></p>
                 {% else %}
@@ -50,7 +49,6 @@
 
                     {% endif %}
                 {% endif %}
-                {% endif %}
             </td>
         </tr>
     </table>
@@ -62,7 +60,9 @@
                 {% include '_following.html' %}
                   </div>
 
+                  <hr>
 
+    {% if posts %}
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
@@ -80,5 +80,8 @@
                 </li>
             </ul>
         </nav>
+    {% else %}
+    <p>{{ user.username }} currently has no posts.</p>
+    {% endif %}
     
 {% endblock %}

@@ -12,6 +12,7 @@
         </div>
         <div style="width:calc(60% - 20px);float:left">
                 <div style="margin-bottom: 8em">
+    {% if posts %}
     {% for post in posts %}
         {% include '_post.html' %}
     {% endfor %}
@@ -32,5 +33,9 @@
             </ul>
         </nav>
     
-    </div> </div></div>
+    </div> 
+{% else %}
+<p>there are no posts to show.</p>
+{% endif %}
+</div></div>
 {% endblock %}
