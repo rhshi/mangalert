@@ -18,6 +18,8 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('invalid username or password')
             return redirect(url_for('auth.login'))
+        user.logged_in = True
+        db.session.commit()
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -28,7 +30,10 @@ def login():
 
 @bp.route('/logout')
 def logout():
+    current_user.logged_in = False
+    db.session.commit()
     logout_user()
+
     return redirect(url_for('main.index'))
 
 

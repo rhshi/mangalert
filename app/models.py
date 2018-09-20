@@ -31,6 +31,7 @@ class User(UserMixin, db.Model):
     mdlist = db.Column(db.String(48))
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    logged_in = db.Column(db.Boolean)
 
     def __repro__(self):
         return '<User: {}>'.format(self.username)
@@ -87,7 +88,7 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(280))
+    body = db.Column(db.String(480))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     title = db.Column(db.String(64))
     link = db.Column(db.String(64))

@@ -1,7 +1,7 @@
 from flask import request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired, ValidationError, Length, URL
+from wtforms.validators import DataRequired, ValidationError, Length, URL, Regexp
 
 from app.models import User
 from app.src.init_follows import checkValid
@@ -35,8 +35,8 @@ class MDListForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField('say something', validators=[
-        DataRequired(), Length(min=1, max=140)])
     title = StringField('title', validators=[(DataRequired())])
-    link = StringField('link (optional)')
+    link = StringField('link (optional)', validators=[Regexp('^[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)', message='Invalid URL')])
+    post = TextAreaField('say something', validators=[
+        DataRequired(), Length(min=1, max=480)])
     submit = SubmitField('submit')

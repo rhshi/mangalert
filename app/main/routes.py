@@ -20,12 +20,14 @@ def before_request():
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
 def index():
+    online_users = [user for user in User.query.all() if user.logged_in]
+    following_online = [user for user in User.query.all() if user.logged_in and user in list(current_user.user_followed)]
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, title=form.title.data, link=form.link.data, user=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post is now live!')
+        flash('your post is now live!')
         return redirect(url_for('main.index'))
     if current_user.is_authenticated:
         page = request.args.get('page', 1, type=int)
@@ -35,11 +37,11 @@ def index():
             if posts.has_next else None
         prev_url = url_for('main.index', page=posts.prev_num) \
             if posts.has_prev else None
-        return render_template('index.html', form=form,
+        return render_template('index.html', type='following online', users=following_online, form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
     else:
-        return render_template('index.html')
+        return render_template('index.html', online_users=online_users)
 
 
 @bp.route('/explore')
@@ -51,7 +53,10 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('main.explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template("explore.html", title='explore', posts=posts.items,
+    popular_users = {user: user.followers.count() for user in User.query.all()}
+    sorted_pop =  sorted(popular_users.items(), key=lambda kv: kv[1])
+    users = list(zip(*sorted_pop))[0][:20]
+    return render_template("explore.html", type='popular users', users=users, title='explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
     
 
@@ -122,7 +127,6 @@ def unfollow(username):
     db.session.commit()
     flash('you have unfollowed {}.'.format(username))
     return redirect(url_for('main.user', username=username))
-
 
 
 
