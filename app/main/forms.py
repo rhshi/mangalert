@@ -10,6 +10,7 @@ from app.src.init_follows import checkValid
 class EditProfileForm(FlaskForm):
     username = StringField('username', validators=[DataRequired()])
     about_me = TextAreaField('about me', validators=[Length(min=0, max=140)])
+    mdlist = StringField('update mdlist (leave blank to delete list)', validators=[Length(min=0, max=48)])
     submit = SubmitField('submit')
 
     def __init__(self, original_username, *args, **kwargs):
@@ -21,6 +22,12 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('this username is not available')
+
+    def validate_mdlist(self, mdlist):
+        if len(mdlist.data) > 0:
+            URL(mdlist)
+        else:
+            pass
 
 
 class MDListForm(FlaskForm):
@@ -40,3 +47,9 @@ class PostForm(FlaskForm):
     post = TextAreaField('say something', validators=[
         DataRequired(), Length(min=1, max=480)])
     submit = SubmitField('submit')
+
+
+class MessageForm(FlaskForm):
+    message = TextAreaField('Message', validators=[
+        DataRequired(), Length(min=0, max=140)])
+    submit = SubmitField('Submit')

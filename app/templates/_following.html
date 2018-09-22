@@ -9,6 +9,7 @@
           <div class="modal-body">
               {% for following in user.user_followed %}
               <a href="{{ url_for('main.user', username=following.username) }}">{{ following.username }}</a>
+              <br>
               {% endfor %}
               <br>
           </div>

@@ -29,7 +29,7 @@ def gatherFollows(link):
         follows.extend(page)
         page_num += 1  
     
-    return follows
+    return follows, len(follows)
 
 
 def determineComplete(manga):
@@ -74,27 +74,6 @@ def determineComplete(manga):
 
         else:
             continue
-
-
-def initializeFollows(link, test=False):
-    all_follows = gatherFollows(link)
-    ongoing = []
-    complete = []
-    for manga in all_follows:
-        if not determineComplete(manga):
-            ongoing.append(manga)
-            print(manga[0], ': ongoing')
-        else:
-            complete.append(manga)
-            print(manga[0], ': completed')
-        time.sleep(1)
-
-    if test:
-        writeMDFollowsData(ongoing, 'ongoing')
-        writeMDFollowsData(complete, 'completed')
-        return
-    else:
-        return ongoing, completed
 
 
 def checkValid(link):

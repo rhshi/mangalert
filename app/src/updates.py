@@ -9,7 +9,6 @@ def getUpdates():
     table = soup.find('table', class_='table table-striped table-sm')
     table_body = table.find('tbody')
     rows = table_body.find_all('tr')
-
     data = collections.OrderedDict()
     for row in rows:
         eles = row.find_all('td')

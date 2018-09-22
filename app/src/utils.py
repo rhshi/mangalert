@@ -10,6 +10,15 @@ def makeSoup(link):
     return soup
 
 
+def isPNG(code):
+    r = requests.get('https://mangadex.org/images/manga/{}.png'.format(code))
+    if r.status_code == 404:
+        return False
+    else:
+        True
+    
+
+
 def writeMDFollowsData(follows, fname):
     with open(os.path.join(os.path.dirname(__file__), '../data/{}.txt'.format(fname)), 'w') as f:
         f.write('\n'.join('{} {}'.format(x[0], x[1]) for x in follows))

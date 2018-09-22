@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<h2>follows</h2>
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#updates" aria-controls="updates" role="tab" data-toggle="tab">updates</a></li>
+    <li role="presentation"><a href="#ongoing" aria-controls="ongoing" role="tab" data-toggle="tab">ongoing</a></li>
+    <li role="presentation"><a href="#complete" aria-controls="complete" role="tab" data-toggle="tab">complete</a></li>
+
+  </ul>
+
+  <!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="updates">
+      <p>asjdflasdjflasjdflasdkjf</p>
+  </div>
+  
+  <div role="tabpanel" class="tab-pane fade" id="ongoing">
+      {% if ongoing %}
+      <table style="width: auto;" class="table  table-striped  table-condensed">
+        {% for manga in ongoing %}
+            <tr>
+                <td>
+                    <a href="{{ 'https://mangadex.org/title/{}'.format(manga.link) }}" target="_blank">
+                        <img src="{{ 'https://mangadex.org/images/manga/{}.{}'.format(manga.link, manga.img) }}" alt="{{ manga.title }}" width="84", height="120">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ 'https://mangadex.org/title/{}'.format(manga.link) }}" target="_blank"><b>{{ manga.title }}</b></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+      {% endif %}
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="complete">
+    {% if complete %}
+    <table style="width: auto;" class="table  table-striped  table-condensed">
+    {% for manga in complete %}
+    <tr>
+        <td>
+            <a href="{{ 'https://mangadex.org/title/{}'.format(manga.link) }}" target="_blank">
+                <img src="{{ 'https://mangadex.org/images/manga/{}.{}'.format(manga.link, manga.img) }}" alt="{{ manga.title }}" width="84", height="120">
+            </a>
+        </td>
+        <td>
+            <a class="text-xs-left" href="{{ 'https://mangadex.org/title/{}'.format(manga.link) }}" target="_blank"><b>{{ manga.title }}</b></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}

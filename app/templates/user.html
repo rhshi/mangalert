@@ -21,7 +21,6 @@
                 <p><a href="{{ user.mdlist }}">your mdlist</a></p>
                 {% else %}
                 <p>
-                    add your mdlist
                     {{ wtf.quick_form(form) }}
                 </p>
 
@@ -48,6 +47,12 @@
                     <p>{{ user.username }} currently has not connected their mdlist.</p>
 
                     {% endif %}
+                    <p>
+                        <a href="{{ url_for('main.send_message',
+                                            recipient=user.username) }}">
+                            send private message
+                        </a>
+                    </p>
                 {% endif %}
             </td>
         </tr>

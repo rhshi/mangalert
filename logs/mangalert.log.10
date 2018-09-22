@@ -1,4 +1,4 @@
-2018-09-19 14:19:35,204 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-20 12:33:10,730 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 76, in user
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 81, in user
     next_url=next_url, prev_url=prev_url)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
     return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
@@ -32,8 +32,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 16, in template
-    {% else % }
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 58, in template
+    {% include '_followers.html'}
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
     return Parser(self, source, name, encode_filename(filename)).parse()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
@@ -50,46 +50,45 @@ Traceback (most recent call last):
     rv = self.parse_statement()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
     return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 213, in parse_if
-    'name:endif'))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 223, in parse_if
+    drop_needle=True)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
     result = self.subparse(end_tokens)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
     rv = self.parse_statement()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
     return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 223, in parse_if
-    drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 164, in parse_statements
-    self.stream.expect('block_end')
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 384, in expect
-    self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got '%'
-2018-09-19 14:20:10,884 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:21:08,950 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:46:09,130 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:57:30,248 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:57:46,306 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:58:22,832 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:58:44,556 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 14:59:35,482 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:30:22,150 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:31:36,187 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:32:15,891 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:33:15,312 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:33:31,590 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:33:51,393 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:34:57,901 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:35:25,087 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:36:28,290 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 15:37:05,480 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:10:19,256 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:10:40,031 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:11:04,613 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:12:01,123 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:12:29,265 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:41:24,650 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:46:16,593 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:47:02,521 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 17:50:00,772 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-19 18:27:30,733 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 288, in parse_include
+    node.template = self.parse_expression()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 432, in parse_expression
+    return self.parse_condexpr()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 437, in parse_condexpr
+    expr1 = self.parse_or()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 450, in parse_or
+    left = self.parse_and()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 459, in parse_and
+    left = self.parse_not()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 470, in parse_not
+    return self.parse_compare()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 474, in parse_compare
+    expr = self.parse_math1()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 496, in parse_math1
+    left = self.parse_concat()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 507, in parse_concat
+    args = [self.parse_math2()]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 517, in parse_math2
+    left = self.parse_pow()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 528, in parse_pow
+    left = self.parse_unary()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 546, in parse_unary
+    node = self.parse_primary()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 564, in parse_primary
+    next(self.stream)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 359, in __next__
+    self.current = next(self._iter)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 562, in wrap
+    for lineno, token, value in stream:
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 683, in tokeniter
+    filename)
+jinja2.exceptions.TemplateSyntaxError: unexpected '}'
+2018-09-20 12:33:51,784 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]

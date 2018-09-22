@@ -1,4 +1,4 @@
-2018-09-20 12:33:52,622 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-21 18:52:17,585 ERROR: Exception on /edit_profile [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,115 +14,110 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 81, in user
-    next_url=next_url, prev_url=prev_url)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 83, in template
-    {% endblock %}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
-    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 223, in parse_if
-    drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 144, in parse_statement
-    self.fail_unknown_tag(token.value, token.lineno)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
-    return self._fail_ut_eof(name, self._end_token_stack, lineno)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
-    self.fail(' '.join(message), lineno)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
-    raise exc(msg, lineno, self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endif'. The innermost block that needs to be closed is 'if'.
-2018-09-20 12:34:08,428 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 12:34:09,080 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 95, in edit_profile
+    for manga in Manga.query.filter(Manga.followers.any(User==current_user)).all():
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 430, in any
+    return self.operate(PropComparator.any_op, criterion, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/attributes.py", line 180, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 382, in any_op
+    return a.any(b, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1154, in any
+    return self._criterion_exists(criterion, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1097, in _criterion_exists
+    criterion = criterion._annotate(
+AttributeError: 'bool' object has no attribute '_annotate'
+2018-09-21 18:53:20,574 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:02:39,848 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:02:45,734 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:06:56,950 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:08:37,920 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:10:33,106 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:10:35,353 ERROR: Unhandled exception [in ./app/tasks.py:66]
 Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 81, in user
-    next_url=next_url, prev_url=prev_url)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/base.html", line 53, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 59, in block "app_content"
-    {% include '_followers.html' %}
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/_followers.html", line 10, in top-level template code
-    {% for follower in list(user.followers) %}
-jinja2.exceptions.UndefinedError: 'list' is undefined
-2018-09-20 12:34:43,277 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 12:37:08,746 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 12:39:08,342 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 12:40:43,334 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 12:41:54,070 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 14:32:11,030 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 17:45:49,526 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 17:45:54,184 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 17:47:09,438 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 17:47:17,818 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
-2018-09-20 17:47:22,802 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+  File "./app/tasks.py", line 38, in get_follows
+    if isPNG(code):
+  File "./app/src/utils.py", line 14, in isPNG
+    r = requests.get('https://mangadex.org/images/manga/{}}.png'.format(code))
+ValueError: Single '}' encountered in format string
+2018-09-21 20:11:05,423 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:11:25,914 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:13:40,517 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:13:53,582 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:14:31,862 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:16:52,429 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:17:02,495 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:17:08,614 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:17:14,620 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:17:37,357 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:18:33,507 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:18:36,772 ERROR: Unhandled exception [in ./app/tasks.py:69]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 42, in get_follows
+    if Manga.query.filter_by(title==follow[0]):
+NameError: name 'title' is not defined
+2018-09-21 20:19:09,063 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:23:42,945 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:23:53,602 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:23:56,764 ERROR: Unhandled exception [in ./app/tasks.py:69]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 42, in get_follows
+    if Manga.query.filter_by(Manga.title==follow[0]):
+TypeError: filter_by() takes 1 positional argument but 2 were given
+2018-09-21 20:24:21,152 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:25:10,292 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:25:24,724 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:25:26,941 ERROR: Unhandled exception [in ./app/tasks.py:69]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 43, in get_follows
+    manga.followers.append(user)
+UnboundLocalError: local variable 'manga' referenced before assignment
+2018-09-21 20:26:31,100 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:27:10,504 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:27:22,438 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:29:27,156 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:29:33,801 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:30:07,335 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:30:10,144 ERROR: Unhandled exception [in ./app/tasks.py:70]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 44, in get_follows
+    Manga.query.filter_by(title=follow[0]).first().followers.append(user)
+AttributeError: 'NoneType' object has no attribute 'followers'
+2018-09-21 20:34:40,192 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:34:51,184 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:35:32,820 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:37:24,070 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:39:22,284 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:41:48,750 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:46:47,329 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:54:09,931 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 20:54:09,983 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:57:36,472 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 20:57:42,754 ERROR: Unhandled exception [in ./app/tasks.py:69]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 43, in get_follows
+    Manga.query.filter_by(title=follow[0]).first().followers.append(user)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/collections.py", line 1044, in append
+    item = __set(self, item, _sa_initiator)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/collections.py", line 1016, in __set
+    item = executor.fire_append_event(item, _sa_initiator)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/collections.py", line 680, in fire_append_event
+    item, initiator)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/attributes.py", line 945, in fire_append_event
+    state._modified_event(dict_, self, NEVER_SET, True)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 707, in _modified_event
+    base.state_class_str(self)
+sqlalchemy.orm.exc.ObjectDereferencedError: Can't emit change event for attribute 'Manga.followers' - parent object of type <Manga> has been garbage collected.
+2018-09-21 21:02:57,613 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:03:12,163 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:03:59,883 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:06:16,566 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:07:34,051 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:07:58,127 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:09:24,003 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:11:20,082 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:11:29,766 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:11:34,846 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:11:47,160 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:12:28,452 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:13:03,773 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]

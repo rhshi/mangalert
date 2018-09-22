@@ -15,3 +15,4 @@ class Config(object):
     ADMINS = ['mangalerttest@gmail.com']
     POSTS_PER_PAGE = 10
     ONLINE_LAST = 5
+    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://127.0.0.1:6379'
