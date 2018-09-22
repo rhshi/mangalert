@@ -1,119 +1,65 @@
-2018-09-21 16:50:28,619 ERROR: Exception on /follows [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-21 21:13:14,135 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:13:22,061 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:13:40,949 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:14:40,059 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:14:52,531 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:16:29,829 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:17:17,419 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:17:26,662 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:17:43,747 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:19:11,210 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:20:27,809 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:20:32,496 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:20:51,744 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:21:47,249 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:21:53,480 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:22:24,053 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:23:53,474 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:24:40,321 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:26:52,038 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:27:38,984 ERROR: Unhandled exception [in ./app/tasks.py:76]
 Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 186, in follows
-    return render_template('manga_follows.html', ongoing=ongoing, complete=complete)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/manga_follows.html", line 46, in template
-    {% endblock %}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
-    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 223, in parse_if
-    drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 223, in parse_if
-    drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 144, in parse_statement
-    self.fail_unknown_tag(token.value, token.lineno)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
-    return self._fail_ut_eof(name, self._end_token_stack, lineno)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
-    self.fail(' '.join(message), lineno)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 59, in fail
-    raise exc(msg, lineno, self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endif'. The innermost block that needs to be closed is 'if'.
-2018-09-21 16:50:49,693 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 16:51:19,038 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 16:52:01,111 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 16:52:55,407 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 16:54:29,102 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 16:54:45,192 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:25:44,661 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:43:19,509 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:49:06,961 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:49:15,363 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:50:09,777 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:51:55,780 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 18:51:59,456 ERROR: Exception on /edit_profile [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+  File "./app/tasks.py", line 70, in get_follows
+    time.sleep(1)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/rq/timeouts.py", line 64, in handle_death_penalty
+    '({0} seconds)'.format(self._timeout))
+rq.timeouts.JobTimeoutException: Task exceeded maximum timeout value (180 seconds)
+2018-09-21 21:31:04,151 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:34:02,364 ERROR: Unhandled exception [in ./app/tasks.py:76]
 Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 88, in edit_profile
-    if form.validate_on_submit():
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
-    return self.is_submitted() and self.validate()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/wtforms/form.py", line 310, in validate
-    return super(Form, self).validate(extra)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/wtforms/form.py", line 152, in validate
-    if not field.validate(self, extra):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/wtforms/fields/core.py", line 206, in validate
-    stop_validation = self._run_validation_chain(form, chain)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
-    validator(form, self)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/forms.py", line 27, in validate_mdlist
-    if len(mdlist) > 0:
-TypeError: object of type 'StringField' has no len()
-2018-09-21 18:52:13,171 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+  File "./app/tasks.py", line 38, in get_follows
+    if isPNG(code):
+  File "./app/src/utils.py", line 14, in isPNG
+    r = requests.get('https://mangadex.org/images/manga/{}.png'.format(code))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/requests/api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/requests/api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/requests/sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/requests/sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/requests/adapters.py", line 440, in send
+    timeout=timeout
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/urllib3/connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/urllib3/connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/urllib3/connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "/home/bshi/miniconda3/lib/python3.6/http/client.py", line 1331, in getresponse
+    response.begin()
+  File "/home/bshi/miniconda3/lib/python3.6/http/client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "/home/bshi/miniconda3/lib/python3.6/http/client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/home/bshi/miniconda3/lib/python3.6/socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/urllib3/contrib/pyopenssl.py", line 280, in recv_into
+    return self.connection.recv_into(*args, **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/OpenSSL/SSL.py", line 1714, in recv_into
+    result = _lib.SSL_read(self._ssl, buf, nbytes)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/rq/timeouts.py", line 64, in handle_death_penalty
+    '({0} seconds)'.format(self._timeout))
+rq.timeouts.JobTimeoutException: Task exceeded maximum timeout value (180 seconds)

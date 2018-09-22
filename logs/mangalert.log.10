@@ -1,4 +1,72 @@
-2018-09-20 12:33:10,730 ERROR: Exception on /user/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-20 17:47:51,987 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:47:55,255 ERROR: Exception on /index [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/ext/declarative/clsregistry.py", line 281, in __call__
+    x = eval(self.arg, globals(), self._dict)
+  File "<string>", line 1, in <module>
+NameError: name 'Task' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1811, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2087, in preprocess_request
+    rv = func()
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 15, in before_request
+    if current_user.is_authenticated:
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 114, in load_user
+    return User.query.get(int(id))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1276, in _configure_all
+    configure_mappers()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 3033, in configure_mappers
+    mapper._post_configure_properties()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 1832, in _post_configure_properties
+    prop.init()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 183, in init
+    self.do_init()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1655, in do_init
+    self._process_dependent_arguments()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1712, in _process_dependent_arguments
+    self.target = self.mapper.mapped_table
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 767, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1628, in mapper
+    argument = self.argument()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/ext/declarative/clsregistry.py", line 293, in __call__
+    (self.prop.parent, self.arg, n.args[0], self.cls)
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper|User|user, expression 'Task' failed to locate a name ("name 'Task' is not defined"). If this is a class name, consider adding this relationship() to the <class 'app.models.User'> class after both dependent classes have been defined.
+2018-09-20 17:49:09,370 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:49:16,896 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:49:21,692 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:49:25,291 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:49:28,124 ERROR: Exception on /index [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,83 +80,45 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 81, in user
-    next_url=next_url, prev_url=prev_url)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 43, in index
+    return render_template('index.html', online_users=online_users)
+NameError: name 'online_users' is not defined
+2018-09-20 17:49:55,938 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:50:50,440 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:50:51,813 ERROR: Exception on /index [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/user.html", line 58, in template
-    {% include '_followers.html'}
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
-    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 223, in parse_if
-    drop_needle=True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 288, in parse_include
-    node.template = self.parse_expression()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 432, in parse_expression
-    return self.parse_condexpr()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 437, in parse_condexpr
-    expr1 = self.parse_or()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 450, in parse_or
-    left = self.parse_and()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 459, in parse_and
-    left = self.parse_not()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 470, in parse_not
-    return self.parse_compare()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 474, in parse_compare
-    expr = self.parse_math1()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 496, in parse_math1
-    left = self.parse_concat()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 507, in parse_concat
-    args = [self.parse_math2()]
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 517, in parse_math2
-    left = self.parse_pow()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 528, in parse_pow
-    left = self.parse_unary()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 546, in parse_unary
-    node = self.parse_primary()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 564, in parse_primary
-    next(self.stream)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 359, in __next__
-    self.current = next(self._iter)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 562, in wrap
-    for lineno, token, value in stream:
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 683, in tokeniter
-    filename)
-jinja2.exceptions.TemplateSyntaxError: unexpected '}'
-2018-09-20 12:33:51,784 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 23, in index
+    following_online = [user for user in User.query.all() if diffDay(user, current_app.config['ONLINE_LAST']) and user in list(current_user.user_followed)]
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 23, in <listcomp>
+    following_online = [user for user in User.query.all() if diffDay(user, current_app.config['ONLINE_LAST']) and user in list(current_user.user_followed)]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'user_followed'
+2018-09-20 17:52:14,735 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:53:51,430 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:55:51,293 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:56:52,485 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:57:25,163 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 17:58:17,244 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 18:00:34,615 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 18:03:28,324 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 18:03:36,732 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-20 18:03:41,115 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:76]
+2018-09-21 00:16:21,033 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 00:16:27,623 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 12:59:34,191 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 12:59:40,456 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 13:30:13,857 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 13:30:20,628 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]

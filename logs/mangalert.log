@@ -1,18 +1,53 @@
-2018-09-21 21:13:14,135 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:13:22,061 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:13:40,949 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:14:40,059 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:14:52,531 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:16:29,829 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:17:17,419 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:17:26,662 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:17:43,747 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:19:11,210 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:20:27,809 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:20:32,496 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:20:51,744 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:21:47,249 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:21:53,480 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:22:24,053 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:23:53,474 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:24:40,321 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:35:01,575 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:35:11,656 ERROR: Exception on /edit_profile [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 95, in edit_profile
+    current_user.launch_task('get_follows', 'getting follows...')
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 110, in launch_task
+    user=self, timeout='1h')
+  File "<string>", line 4, in __init__
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 417, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 249, in reraise
+    raise value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 414, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/ext/declarative/base.py", line 736, in _declarative_constructor
+    (k, cls_.__name__))
+TypeError: 'timeout' is an invalid keyword argument for Task
+2018-09-21 21:35:13,763 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:41:40,445 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:41:51,363 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:46:46,773 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:47:02,089 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:47:10,659 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:47:36,161 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:48:36,556 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 21:52:08,993 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:52:14,680 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:52:19,960 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:52:26,663 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 21:53:06,236 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 22:01:05,248 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 22:01:20,604 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 22:01:31,267 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 22:01:37,668 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 22:02:10,949 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+2018-09-21 22:02:29,348 INFO: mangalert startup [in ./app/__init__.py:82]
+2018-09-21 22:02:56,708 INFO: mangalert startup [in ./app/__init__.py:82]

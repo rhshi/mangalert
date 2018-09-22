@@ -1,4 +1,4 @@
-2018-09-21 13:55:36,003 ERROR: Exception on /notifications [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-21 16:49:17,186 ERROR: Exception on /follows [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,72 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 174, in notifications
-    return jsonify([{
-NameError: name 'jsonify' is not defined
-2018-09-21 13:55:45,861 ERROR: Exception on /notifications [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 174, in notifications
-    return jsonify([{
-NameError: name 'jsonify' is not defined
-2018-09-21 13:56:02,084 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 13:56:35,883 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 13:58:00,975 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 13:58:32,745 ERROR: Exception on /user/admin [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 69, in user
-    current_user.launch_task('get_follows', 'getting follows...')
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/models.py", line 106, in launch_task
-    rq_job = current_app.task_queue.enqueue('app.tasks.' + name, self.id,
-NameError: name 'current_app' is not defined
-2018-09-21 13:59:13,125 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 13:59:29,249 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 14:02:07,117 ERROR: Exception on /send_message/admin [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 146, in send_message
-    form=form, recipient=recipient)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 186, in follows
+    return render_template('manga_follows.html', ongoing=ongoing, complete=complete)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
     return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
@@ -88,11 +24,47 @@ Traceback (most recent call last):
     return self._load_template(name, self.make_globals(globals))
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
     template = self.loader.load(self, name, globals)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 58, in get_source
-    return self._get_source_fast(environment, template)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/templating.py", line 86, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: send_message.html
-2018-09-21 14:02:34,743 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/templates/manga_follows.html", line 35, in template
+    <a href="{{ 'https://mangadex.org{}''.format(manga.link) }}">{{ manga.title }}</a>
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 213, in parse_if
+    'name:endif'))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 199, in parse_for
+    body = self.parse_statements(('name:endfor', 'name:else'))
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/parser.py", line 876, in subparse
+    self.stream.expect('variable_end')
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/jinja2/lexer.py", line 384, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 'https'
+2018-09-21 16:50:02,411 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]

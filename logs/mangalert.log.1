@@ -1,4 +1,68 @@
-2018-09-21 18:52:17,585 ERROR: Exception on /edit_profile [POST] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+2018-09-21 21:32:33,213 ERROR: Exception on /notifications [GET] [in /home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1127, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 635, in _init_compiled
+    grp, m in enumerate(parameters)]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 635, in <listcomp>
+    grp, m in enumerate(parameters)]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/compiler.py", line 569, in construct_params
+    pd[self.bind_names[bindparam]] = bindparam.effective_value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 1153, in effective_value
+    return self.callable()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1420, in _go
+    value = fn(*arg, **kw)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 2623, in _get_state_attr_by_column
+    return state.manager[prop.key].impl.get(state, dict_, passive=passive)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/attributes.py", line 594, in get
+    value = state._load_expired(state, passive)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 608, in _load_expired
+    self.manager.deferred_scalar_loader(self, toload)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 876, in load_scalar_attributes
+    only_load_props=attribute_names)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 188, in load_on_ident
+    identity_token=identity_token
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
+    return q.one()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2947, in one
+    ret = self.one_or_none()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
+    ret = list(self)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error [SQL: 'SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.mdlist AS user_mdlist, user.about_me AS user_about_me, user.last_seen AS user_last_seen, user.last_message_read_time AS user_last_message_read_time \nFROM user \nWHERE user.id = ?'] [parameters: (3,)] (Background on this error at: http://sqlalche.me/e/e3q8)
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,110 +78,74 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/bshi/miniconda3/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 95, in edit_profile
-    for manga in Manga.query.filter(Manga.followers.any(User==current_user)).all():
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 430, in any
-    return self.operate(PropComparator.any_op, criterion, **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/attributes.py", line 180, in operate
-    return op(self.comparator, *other, **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/interfaces.py", line 382, in any_op
-    return a.any(b, **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1154, in any
-    return self._criterion_exists(criterion, **kwargs)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1097, in _criterion_exists
-    criterion = criterion._annotate(
-AttributeError: 'bool' object has no attribute '_annotate'
-2018-09-21 18:53:20,574 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:02:39,848 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:02:45,734 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:06:56,950 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:08:37,920 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:10:33,106 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:10:35,353 ERROR: Unhandled exception [in ./app/tasks.py:66]
-Traceback (most recent call last):
-  File "./app/tasks.py", line 38, in get_follows
-    if isPNG(code):
-  File "./app/src/utils.py", line 14, in isPNG
-    r = requests.get('https://mangadex.org/images/manga/{}}.png'.format(code))
-ValueError: Single '}' encountered in format string
-2018-09-21 20:11:05,423 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:11:25,914 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:13:40,517 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:13:53,582 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:14:31,862 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:16:52,429 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:17:02,495 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:17:08,614 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:17:14,620 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:17:37,357 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:18:33,507 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:18:36,772 ERROR: Unhandled exception [in ./app/tasks.py:69]
-Traceback (most recent call last):
-  File "./app/tasks.py", line 42, in get_follows
-    if Manga.query.filter_by(title==follow[0]):
-NameError: name 'title' is not defined
-2018-09-21 20:19:09,063 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:23:42,945 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:23:53,602 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:23:56,764 ERROR: Unhandled exception [in ./app/tasks.py:69]
-Traceback (most recent call last):
-  File "./app/tasks.py", line 42, in get_follows
-    if Manga.query.filter_by(Manga.title==follow[0]):
-TypeError: filter_by() takes 1 positional argument but 2 were given
-2018-09-21 20:24:21,152 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:25:10,292 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:25:24,724 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:25:26,941 ERROR: Unhandled exception [in ./app/tasks.py:69]
-Traceback (most recent call last):
-  File "./app/tasks.py", line 43, in get_follows
-    manga.followers.append(user)
-UnboundLocalError: local variable 'manga' referenced before assignment
-2018-09-21 20:26:31,100 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:27:10,504 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:27:22,438 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:29:27,156 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:29:33,801 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:30:07,335 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:30:10,144 ERROR: Unhandled exception [in ./app/tasks.py:70]
-Traceback (most recent call last):
-  File "./app/tasks.py", line 44, in get_follows
-    Manga.query.filter_by(title=follow[0]).first().followers.append(user)
-AttributeError: 'NoneType' object has no attribute 'followers'
-2018-09-21 20:34:40,192 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:34:51,184 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:35:32,820 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:37:24,070 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:39:22,284 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:41:48,750 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:46:47,329 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:54:09,931 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 20:54:09,983 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:57:36,472 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 20:57:42,754 ERROR: Unhandled exception [in ./app/tasks.py:69]
-Traceback (most recent call last):
-  File "./app/tasks.py", line 43, in get_follows
-    Manga.query.filter_by(title=follow[0]).first().followers.append(user)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/collections.py", line 1044, in append
-    item = __set(self, item, _sa_initiator)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/collections.py", line 1016, in __set
-    item = executor.fire_append_event(item, _sa_initiator)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/collections.py", line 680, in fire_append_event
-    item, initiator)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/attributes.py", line 945, in fire_append_event
-    state._modified_event(dict_, self, NEVER_SET, True)
-  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 707, in _modified_event
-    base.state_class_str(self)
-sqlalchemy.orm.exc.ObjectDereferencedError: Can't emit change event for attribute 'Manga.followers' - parent object of type <Manga> has been garbage collected.
-2018-09-21 21:02:57,613 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:03:12,163 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:03:59,883 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:06:16,566 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:07:34,051 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:07:58,127 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:09:24,003 INFO: mangalert startup [in ./app/__init__.py:82]
-2018-09-21 21:11:20,082 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:11:29,766 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:11:34,846 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:11:47,160 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:12:28,452 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
-2018-09-21 21:13:03,773 INFO: mangalert startup [in /mnt/c/Users/Bobby Shi/projects/mangalert/app/__init__.py:82]
+  File "/mnt/c/Users/Bobby Shi/projects/mangalert/app/main/routes.py", line 190, in notifications
+    } for n in notifications])
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1132, in _execute_context
+    None, None)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1127, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 635, in _init_compiled
+    grp, m in enumerate(parameters)]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 635, in <listcomp>
+    grp, m in enumerate(parameters)]
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/compiler.py", line 569, in construct_params
+    pd[self.bind_names[bindparam]] = bindparam.effective_value
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 1153, in effective_value
+    return self.callable()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py", line 1420, in _go
+    value = fn(*arg, **kw)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/mapper.py", line 2623, in _get_state_attr_by_column
+    return state.manager[prop.key].impl.get(state, dict_, passive=passive)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/attributes.py", line 594, in get
+    value = state._load_expired(state, passive)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/state.py", line 608, in _load_expired
+    self.manager.deferred_scalar_loader(self, toload)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 876, in load_scalar_attributes
+    only_load_props=attribute_names)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 188, in load_on_ident
+    identity_token=identity_token
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
+    return q.one()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2947, in one
+    ret = self.one_or_none()
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2917, in one_or_none
+    ret = list(self)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2988, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3011, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/home/bshi/miniconda3/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.StatementError: (sqlalchemy.exc.OperationalError) (sqlite3.OperationalError) disk I/O error [SQL: 'SELECT notification.id AS notification_id, notification.name AS notification_name, notification.user_id AS notification_user_id, notification.timestamp AS notification_timestamp, notification.payload_json AS notification_payload_json \nFROM notification \nWHERE ? = notification.user_id AND notification.timestamp > ? ORDER BY notification.timestamp ASC'] [parameters: [{}]] (Background on this error at: http://sqlalche.me/e/e3q8)

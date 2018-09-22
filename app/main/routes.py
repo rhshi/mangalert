@@ -66,7 +66,7 @@ def user(username):
     form = MDListForm()
     if form.validate_on_submit():
         current_user.mdlist = form.mdlist.data
-        current_user.launch_task('get_follows', 'getting follows...')
+        current_user.launch_task('get_follows', 'getting follows...', timeout='1h')
         db.session.commit()
         flash('thank you for connecting your mdlist.')
         return redirect(url_for('main.user', username=current_user.username))
@@ -92,7 +92,7 @@ def edit_profile():
             current_user.mdlist = form.mdlist.data
             for manga in Manga.query.filter(Manga.followers.any(User.username==current_user.username)).all():
                 manga.followers.remove(current_user)
-            current_user.launch_task('get_follows', 'getting follows...')
+            current_user.launch_task('get_follows', 'getting follows...', timeout='1h')
             db.session.commit()
         elif form.mdlist.data and form.mdlist.data == current_user.mdlist:
             pass
